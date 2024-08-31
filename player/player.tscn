@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://eym0nxs3nqul"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_74evh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_77mqu"]
+size = Vector3(1, 2.02686, 1)
+
+[node name="Player" type="CharacterBody3D"]
+safe_margin = 0.05
+script = ExtResource("1_74evh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04847, 0)
+shape = SubResource("BoxShape3D_77mqu")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+spring_length = 0.05
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+fov = 65.0

@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxxgne8mhb7ql"]
+
+[ext_resource type="PackedScene" uid="uid://eym0nxs3nqul" path="res://player/player.tscn" id="1_eqr35"]
+[ext_resource type="PackedScene" uid="uid://y0tt1o5ceiqe" path="res://staticMapAssets/cornerRight.tscn" id="2_v01nx"]
+[ext_resource type="PackedScene" uid="uid://m6w4x6hb2cyl" path="res://staticMapAssets/cornerLeft.tscn" id="3_udwyb"]
+[ext_resource type="PackedScene" uid="uid://c52w2a5l7das1" path="res://staticMapAssets/wallLeft.tscn" id="4_crhjx"]
+[ext_resource type="PackedScene" uid="uid://ic6eq287i8kq" path="res://staticMapAssets/wallRight.tscn" id="5_pc1ev"]
+[ext_resource type="PackedScene" uid="uid://b6ax88e1wiqwv" path="res://staticMapAssets/wallLeftTorchlight.tscn" id="6_a57n1"]
+[ext_resource type="PackedScene" uid="uid://bd7485i7wiyx3" path="res://staticMapAssets/wallRightTorchlight.tscn" id="7_70eah"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5tqw"]
+sky_top_color = Color(0.00411872, 0.102312, 0.204308, 1)
+sky_horizon_color = Color(0.00145741, 0.0182003, 0.106091, 1)
+
+[sub_resource type="Sky" id="Sky_32qy0"]
+sky_material = SubResource("ProceduralSkyMaterial_u5tqw")
+
+[sub_resource type="Environment" id="Environment_ddn8b"]
+background_mode = 2
+sky = SubResource("Sky_32qy0")
+fog_enabled = true
+fog_light_color = Color(0.190926, 0.0732533, 0.0105077, 1)
+fog_light_energy = 0.3
+fog_density = 0.025
+
+[node name="World" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_eqr35")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ddn8b")
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="StartZone" type="Node3D" parent="Map"]
+
+[node name="CornerRight" parent="Map/StartZone" instance=ExtResource("2_v01nx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="CornerLeft" parent="Map/StartZone" instance=ExtResource("3_udwyb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, 2)
+
+[node name="WallLeft" parent="Map/StartZone" instance=ExtResource("4_crhjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="WallRight" parent="Map/StartZone" instance=ExtResource("5_pc1ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="WallLeft2" parent="Map/StartZone" instance=ExtResource("4_crhjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="WallRight2" parent="Map/StartZone" instance=ExtResource("5_pc1ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="WallLeftTorchlight" parent="Map/StartZone" instance=ExtResource("6_a57n1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -10)
+
+[node name="WallRightTorchlight" parent="Map/StartZone" instance=ExtResource("7_70eah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -10)
+
+[node name="WallLeft3" parent="Map/StartZone" instance=ExtResource("4_crhjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14)
+
+[node name="WallLeft4" parent="Map/StartZone" instance=ExtResource("4_crhjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -18)
+
+[node name="WallRight3" parent="Map/StartZone" instance=ExtResource("5_pc1ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -14)
+
+[node name="WallRight4" parent="Map/StartZone" instance=ExtResource("5_pc1ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -18)
+
+[node name="CornerLeft2" parent="Map/StartZone" instance=ExtResource("3_udwyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -22)
+
+[node name="CornerRight2" parent="Map/StartZone" instance=ExtResource("2_v01nx")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 0, -22)
